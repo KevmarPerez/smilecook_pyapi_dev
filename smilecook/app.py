@@ -14,8 +14,9 @@ def create_app():
     app.config.from_object(Config)
     # api = Api(app)
 
-    register_extensions(app)
-    register_resources(app)
+    with app.app_context():
+        register_extensions(app)
+        register_resources(app)
 
     return app
 
